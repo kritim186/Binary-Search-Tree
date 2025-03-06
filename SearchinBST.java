@@ -17,6 +17,14 @@ public class SearchinBST {
         }
        
      }
+     public static void inorder(Node root){
+        if(root == null){
+            return;
+        }
+        inorder(root.left);
+        System.out.print(root.data+" ");
+        inorder(root.right);
+    }
 
      public static void main(String[] args) {
         Node root = new Node(5);
@@ -25,7 +33,8 @@ public class SearchinBST {
         root.left.right = new Node(3);
         root.left.right.right = new Node(2);
         root.left.right.left = new Node(4);
-
+        inorder(root);
        System.out.println(search(root, 3));
+       inorder(root);
      }
 }
