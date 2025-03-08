@@ -1,4 +1,4 @@
-public class SearchinBST {
+class PrintInRange{
     static class Node {
         int data;
         Node left, right;
@@ -6,18 +6,18 @@ public class SearchinBST {
          this.data = data;
         }      
      }
-     public static boolean search(Node root, int val){
-        if(root == null) return false;
-
-        if(root.data == val) return true;
-        if(root.data > val){
-            return search(root.left, val);
+     public static void printRange(Node root, int k1, int k2){
+        if(root == null) return;
+        if(k1 <= root.data && root.data <= k2){
+            printRange(root.left, k1, k2);
+            System.out.print(root.data+" ");
+            printRange(root.right, k1, k2);
+        }else if(root.data > k2){
+            printRange(root.left, k1, k2);
         }else{
-            return search(root.right, val);
+            printRange(root.right, k1, k2);
         }
-       
      }
-
 
      public static void main(String[] args) {
         Node root = new Node(5);
@@ -26,8 +26,7 @@ public class SearchinBST {
         root.left.right = new Node(3);
         root.left.right.right = new Node(2);
         root.left.right.left = new Node(4);
-   
-       System.out.println(search(root, 3));
-  
+
+        printRange(root, 1, 5);
      }
 }
